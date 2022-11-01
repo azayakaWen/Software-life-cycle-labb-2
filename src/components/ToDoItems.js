@@ -7,7 +7,8 @@ const ToDoitems = ({ text, onSubmit, setOnSubmit, value }) => {
   }
 
   //Handler for check button
-  const completeHandler = () => {
+  const completeHandler = (e) => {
+    e.preventDefault()
     setOnSubmit(
       onSubmit.map((item) => {
         if (item.id === value.id) {

@@ -26,7 +26,7 @@ const ToDo = ({ inputText, setInputText, onSubmit, setOnSubmit }) => {
       <form>
         <input value={inputText} onChange={inputTextHandler} type="text" />
         <button onClick={submitToDoHandler} type="submit">
-          ?
+          Submit
         </button>
 
         <div>
