@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react"
+import "./App.css"
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import ToDo from "./components/ToDo"
+import Done from "./components/Done"
 
 function App() {
+  const [inputText, setInputText] = useState("")
+  const [onSubmit, setOnSubmit] = useState([])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <h1>JUST DO IT!</h1>
+
+      <BrowserRouter>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">To do list</Link>
+            </li>
+            <li>
+              <Link to="/done">Done!</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route
+            element={
+              <ToDo
+                inputText={inputText}
+                setInputText={setInputText}
+                onSubmit={onSubmit}
+                setOnSubmit={setOnSubmit}
+              />
+            }
+            path="/"
+          />
+          <Route element={<Done />} path="/done" />
+        </Routes>
+      </BrowserRouter>
+    </>
+  )
 }
 
-export default App;
+export default App
