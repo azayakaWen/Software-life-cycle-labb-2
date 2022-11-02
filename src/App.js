@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import "./App.css"
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import ToDo from "./components/ToDo"
 import Done from "./components/Done"
@@ -35,7 +34,10 @@ function App() {
             }
             path="/"
           />
-          <Route element={<Done />} path="/done" />
+          <Route
+            element={<Done onSubmit={onSubmit} setOnSubmit={setOnSubmit} />}
+            path="/done"
+          />
         </Routes>
       </BrowserRouter>
     </>

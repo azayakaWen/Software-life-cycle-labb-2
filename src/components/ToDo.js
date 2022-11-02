@@ -28,21 +28,21 @@ const ToDo = ({ inputText, setInputText, onSubmit, setOnSubmit }) => {
         <button onClick={submitToDoHandler} type="submit">
           Submit
         </button>
-
-        <div>
-          <ul>
-            {onSubmit.map((value) => (
-              <ToDoItems
-                key={value.id}
-                text={value.text}
-                onSubmit={onSubmit}
-                setOnSubmit={setOnSubmit}
-                value={value}
-              />
-            ))}
-          </ul>
-        </div>
       </form>
+
+      <div>
+        <ul>
+          {onSubmit.map((value) => (
+            <ToDoItems
+              key={value.id}
+              text={value.text}
+              onSubmit={onSubmit}
+              setOnSubmit={setOnSubmit}
+              value={value}
+            />
+          ))}
+        </ul>
+      </div>
     </>
   )
 }
