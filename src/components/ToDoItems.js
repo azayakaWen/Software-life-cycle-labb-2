@@ -23,11 +23,17 @@ const ToDoitems = ({ text, onSubmit, setOnSubmit, value }) => {
   }
 
   return (
-    <div>
-      <li>{text}</li>
-      <button onClick={completeHandler}>check</button>
-      <button onClick={deleteHandler}>trash</button>
-    </div>
+    <>
+      {value.complete === false ? (
+        <div>
+          <li>{text}</li>
+          <button onClick={completeHandler}>check</button>
+          <button onClick={deleteHandler}>trash</button>
+        </div>
+      ) : (
+        ""
+      )}
+    </>
   )
 }
 
