@@ -1,5 +1,6 @@
 import React from "react"
 import ToDoItems from "./ToDoItems"
+import Cookies from "./Cookies"
 
 const ToDo = ({ inputText, setInputText, onSubmit, setOnSubmit }) => {
   //Handler for input element
@@ -43,6 +44,7 @@ const ToDo = ({ inputText, setInputText, onSubmit, setOnSubmit }) => {
           ))}
         </ul>
       </div>
+      <Cookies />
     </>
   )
 }

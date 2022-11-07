@@ -4,8 +4,12 @@ import ToDo from "./components/ToDo"
 import Done from "./components/Done"
 
 function App() {
+  //useState for input
   const [inputText, setInputText] = useState("")
+
+  //useState for submit button
   const [onSubmit, setOnSubmit] = useState([])
+
   return (
     <>
       <h1>JUST DO IT!</h1>
