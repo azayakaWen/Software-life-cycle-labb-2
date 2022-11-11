@@ -1,24 +1,11 @@
-import React from "react"
-import DoneItems from "./DoneItems"
+import React from 'react'
 
-const Done = ({ onSubmit, setOnSubmit }) => {
-  return (
-    <>
-      <div>
-        <ul>
-          {onSubmit.map((value) => (
-            <DoneItems
-              key={value.id}
-              text={value.text}
-              onSubmit={onSubmit}
-              setOnSubmit={setOnSubmit}
-              value={value}
-            />
-          ))}
-        </ul>
-      </div>
-    </>
-  )
+const Done = () => {
+	return (
+		<>
+			<div>1111</div>
+		</>
+	)
 }
 
 export default Done
