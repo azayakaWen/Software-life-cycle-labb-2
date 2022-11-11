@@ -1,52 +1,86 @@
-import React from "react"
-import ToDoItems from "./ToDoItems"
-import Cookies from "./Cookies"
+import React, { useState, useEffect } from 'react'
+import Cookies from './Cookies'
+import { db } from '../firebase-config'
+import {
+	collection,
+	getDocs,
+	addDoc,
+	deleteDoc,
+	doc,
+	updateDoc
+} from 'firebase/firestore'
 
-const ToDo = ({ inputText, setInputText, onSubmit, setOnSubmit }) => {
-  //Handler for input element
-  const inputTextHandler = (e) => {
-    setInputText(e.target.value)
-  }
+const ToDo = () => {
+	const [newTodo, setNewTodo] = useState('')
+	const [todo, setTodo] = useState([])
+	const todoCollectionRef = collection(db, 'thingstodo')
 
-  //Handler for submit button
-  const submitToDoHandler = (e) => {
-    e.preventDefault()
-    setOnSubmit([
-      ...onSubmit,
-      {
-        text: inputText,
-        complete: false,
-        id: Math.random() * 1000,
-      },
-    ])
-    setInputText("")
-  }
+	useEffect(() => {
+		const getTodo = async () => {
+			const data = await getDocs(todoCollectionRef)
+			setTodo(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+			console.log(data)
+		}
+		getTodo()
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
 
-  return (
-    <>
-      <form>
-        <input value={inputText} onChange={inputTextHandler} type="text" />
-        <button onClick={submitToDoHandler} type="submit">
-          Submit
-        </button>
-      </form>
+	const checkTodo = async (id, done) => {
+		const todoDoc = doc(db, 'thingstodo', id)
+		const newFields = { done: true }
+		await updateDoc(todoDoc, newFields)
+	}
 
-      <div>
-        <ul>
-          {onSubmit.map((value) => (
-            <ToDoItems
-              key={value.id}
-              text={value.text}
-              onSubmit={onSubmit}
-              setOnSubmit={setOnSubmit}
-              value={value}
-            />
-          ))}
-        </ul>
-      </div>
-      <Cookies />
-    </>
-  )
+	const deleteTodo = async (id) => {
+		const todoDoc = doc(db, 'thingstodo', id)
+		await deleteDoc(todoDoc)
+		window.location.reload(false)
+	}
+
+	const addTodo = async () => {
+		await addDoc(todoCollectionRef, { todoThing: newTodo, done: false })
+		window.location.reload(false)
+	}
+
+	return (
+		<>
+			{/* Input field to create a new todo */}
+			<input
+				type="text"
+				placeholder="Todo"
+				onChange={(event) => {
+					setNewTodo(event.target.value)
+				}}
+			/>
+			<button onClick={addTodo}>New todo</button>
+
+			<div>
+				{todo.map((todo) => {
+					return (
+						<ul>
+							<li>{todo.todoThing}</li>
+							<button
+								onClick={() => {
+									deleteTodo(todo.id)
+								}}
+							>
+								Delete
+							</button>
+							<button
+								onClick={() => {
+									checkTodo(todo.id, todo.done)
+								}}
+							>
+								{' '}
+								Check
+							</button>
+						</ul>
+					)
+				})}
+			</div>
+			<Cookies />
+		</>
+	)
 }
 
 export default ToDo
