@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Cookies from './Cookies'
 import { db } from '../firebase-config'
 import {
 	collection,
@@ -58,7 +57,7 @@ const Done = () => {
 
 			<div>
 				{todo.map((todo) => {
-					if (todo.done === true) {
+					if (todo.done) {
 						return (
 							<ul>
 								<li>{todo.todoThing}</li>
@@ -85,7 +84,6 @@ const Done = () => {
 					return <div></div>
 				})}
 			</div>
-			<Cookies />
 		</>
 	)
 }
