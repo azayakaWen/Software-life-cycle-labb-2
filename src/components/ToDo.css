@@ -1,0 +1,46 @@
+.input-container {
+  display: flex;
+  justify-content: center;
+  padding: 5vh 0;
+}
+
+input {
+  margin-right: 2vh;
+  border-radius: 3px;
+  box-shadow: 8px 8px 2px 1px rgba(36, 36, 37, 0.2);
+}
+
+.submit-button {
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(36, 36, 37, 0.2);
+  font-size: 15px;
+}
+
+.submit-button:hover {
+  box-shadow: rgb(4, 74, 166) 1px 0 10px;
+}
+
+.todo-container {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid white;
+  background-color: white;
+  border-radius: 5px;
+  width: 300px;
+  align-items: center;
+  box-shadow: 8px 8px 2px 1px rgba(36, 36, 37, 0.2);
+
+}
+
+.todo {
+  list-style: none;
+  padding: 5px;
+}
+
+.action-button {
+  margin-left: 5px;
+  border: none;
+  background-color: white;
+}

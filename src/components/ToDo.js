@@ -9,6 +9,9 @@ import {
   doc,
   updateDoc,
 } from "firebase/firestore"
+import { FaTrash } from "react-icons/fa"
+import { FaCheck } from "react-icons/fa"
+import "./ToDo.css"
 
 const ToDo = () => {
   const [newTodo, setNewTodo] = useState("")
@@ -44,35 +47,42 @@ const ToDo = () => {
 
   return (
     <>
-      {/* Input field to create a new todo */}
-      <input
-        type="text"
-        placeholder="Todo"
-        onChange={(event) => {
-          setNewTodo(event.target.value)
-        }}
-      />
-      <button onClick={addTodo}>New todo</button>
+      <div className="input-container">
+        {/* Input field to create a new todo */}
+        <input
+          type="text"
+          placeholder="Todo"
+          onChange={(event) => {
+            setNewTodo(event.target.value)
+          }}
+        />
+        <button className="submit-button" onClick={addTodo}>
+          New todo
+        </button>
+      </div>
 
       <div>
         {todo.map((todo) => {
           return (
-            <ul>
-              <li>{todo.todoThing}</li>
+            <ul className="todo-container">
+              <li className="todo">{todo.todoThing}</li>
+
               <button
+                className="action-button"
                 onClick={() => {
                   deleteTodo(todo.id)
                 }}
               >
-                Delete
+                <FaTrash />
               </button>
               <button
+                className="action-button"
                 onClick={() => {
                   checkTodo(todo.id, todo.done)
                 }}
               >
                 {" "}
-                Check
+                <FaCheck />
               </button>
             </ul>
           )

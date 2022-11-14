@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import LogRocket from "logrocket"
 import ToDo from "./components/ToDo"
 import Done from "./components/Done"
+import "./index.css"
 
 class App extends Component {
   componentWillMount() {
@@ -15,11 +16,11 @@ class App extends Component {
 
         <BrowserRouter>
           <nav>
-            <ul>
-              <li>
+            <ul className="link-container">
+              <li className="link">
                 <Link to="/">To do list</Link>
               </li>
-              <li>
+              <li className="link">
                 <Link to="/done">Done!</Link>
               </li>
             </ul>
