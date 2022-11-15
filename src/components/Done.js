@@ -7,6 +7,10 @@ import {
   doc,
   updateDoc,
 } from "firebase/firestore"
+import { FaTrash } from "react-icons/fa"
+import { FaCheck } from "react-icons/fa"
+import "./Done.css"
+
 // Almost identical to the "ToDo.js" except that it renders the todo if the "done" field
 // is true.
 const Done = () => {
@@ -35,46 +39,34 @@ const Done = () => {
     window.location.reload(false)
   }
 
-  // const addTodo = async () => {
-  // 	await addDoc(todoCollectionRef, { todoThing: newTodo, done: false })
-  // 	window.location.reload(false)
-  // }
-
   return (
     <>
-      <h1>Done</h1>
-
-      {/* <input
-				type="text"
-				placeholder="Todo"
-				onChange={(event) => {
-					setNewTodo(event.target.value)
-				}}
-			/>
-			<button onClick={addTodo}>New todo</button> */}
+      <h2>Done</h2>
 
       <div>
         {todo.map((todo) => {
           if (todo.done) {
             return (
-              <ul>
-                <li>{todo.todoThing}</li>
+              <ul className="done-container">
+                <li className="done">{todo.todoThing}</li>
 
                 <button
+                  className="action-button"
                   onClick={() => {
                     deleteTodo(todo.id)
                   }}
                 >
-                  Delete
+                  <FaTrash />
                 </button>
 
                 <button
+                  className="action-button"
                   onClick={() => {
                     checkTodo(todo.id, todo.done)
                   }}
                 >
                   {" "}
-                  Check
+                  <FaCheck />
                 </button>
               </ul>
             )
