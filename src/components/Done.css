@@ -1,0 +1,29 @@
+h2 {
+  text-align: center;
+  font-size: 40px;
+  text-shadow: rgb(4, 74, 166) 1px 0 10px;
+}
+
+.done-container {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid white;
+  background-color: white;
+  border-radius: 5px;
+  width: 300px;
+  align-items: center;
+  box-shadow: 8px 8px 2px 1px rgba(36, 36, 37, 0.2);
+}
+
+.done {
+  list-style: none;
+  padding: 5px;
+  text-decoration:line-through;
+}
+
+.action-button {
+  margin-left: 5px;
+  border: none;
+  background-color: white;
+}
