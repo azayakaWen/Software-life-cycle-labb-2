@@ -22,7 +22,6 @@ const ToDo = () => {
 		const getTodo = async () => {
 			const data = await getDocs(todoCollectionRef)
 			setTodo(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-			console.log(data)
 		}
 		getTodo()
 		// eslint-disable-next-line react-hooks/exhaustive-deps
