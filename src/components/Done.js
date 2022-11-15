@@ -3,7 +3,6 @@ import { db } from "../firebase-config"
 import {
   collection,
   getDocs,
-  addDoc,
   deleteDoc,
   doc,
   updateDoc,
@@ -11,7 +10,6 @@ import {
 // Almost identical to the "ToDo.js" except that it renders the todo if the "done" field
 // is true.
 const Done = () => {
-  const [newTodo, setNewTodo] = useState("")
   const [todo, setTodo] = useState([])
   const todoCollectionRef = collection(db, "thingstodo")
 
