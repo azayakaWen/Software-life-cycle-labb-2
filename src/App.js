@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <h1>JUST DO IT!</h1>
+        <h1>JUST DO IT!!</h1>
 
         <BrowserRouter>
           <nav>
