@@ -65,30 +65,32 @@ const ToDo = () => {
 				{todo.map((todo) => {
 					if (!todo.done) {
 						return (
-							<ul className="todo-container">
-								<li className="todo">{todo.todoThing}</li>
+							<div key={todo.id}>
+								<ul className="todo-container">
+									<li className="todo">{todo.todoThing}</li>
 
-								<button
-									className="action-button"
-									onClick={() => {
-										deleteTodo(todo.id)
-									}}
-								>
-									<FaTrash />
-								</button>
-								<button
-									className="action-button"
-									onClick={() => {
-										checkTodo(todo.id, todo.done)
-									}}
-								>
-									{' '}
-									<FaCheck />
-								</button>
-							</ul>
+									<button
+										className="action-button"
+										onClick={() => {
+											deleteTodo(todo.id)
+										}}
+									>
+										<FaTrash />
+									</button>
+									<button
+										className="action-button"
+										onClick={() => {
+											checkTodo(todo.id, todo.done)
+										}}
+									>
+										{' '}
+										<FaCheck />
+									</button>
+								</ul>
+							</div>
 						)
 					}
-					return <div></div>
+					return null
 				})}
 			</div>
 			<Cookies />
