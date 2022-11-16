@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import { HashRouter, Routes, Route, Link } from "react-router-dom"
 import LogRocket from "logrocket"
 import CookieConsent from "react-cookie-consent"
 import ToDo from "./components/ToDo"
@@ -12,7 +12,7 @@ class App extends Component {
       <>
         <h1>JUST DO IT!!</h1>
 
-        <BrowserRouter>
+        <HashRouter>
           <nav>
             <ul className="link-container">
               <li className="link">
@@ -46,7 +46,7 @@ class App extends Component {
             <Route element={<ToDo />} path="/" />
             <Route element={<Done />} path="/done" />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </>
     )
   }
