@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-// import Cookies from './cookies/Cookies'
 import { db } from "../firebase-config"
 import {
   collection,
@@ -93,7 +92,6 @@ const ToDo = () => {
           return null
         })}
       </div>
-      {/* <Cookies /> */}
     </>
   )
 }

@@ -7,9 +7,6 @@ import Done from "./components/Done"
 import "./index.css"
 
 class App extends Component {
-  componentWillMount() {
-    LogRocket.init("kawuvz/software-life-cycle-labb-2")
-  }
   render() {
     return (
       <>
@@ -28,6 +25,9 @@ class App extends Component {
           </nav>
 
           <CookieConsent
+            onAccept={() => {
+              LogRocket.init("kawuvz/software-life-cycle-labb-2")
+            }}
             location="bottom"
             buttonText="Accept"
             cookieName="TodoCookie"
