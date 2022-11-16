@@ -22,12 +22,6 @@ const firebaseConfig = {
   storageBucket: { REACT_APP_STORAGE_BUCKET },
   messagingSenderId: { REACT_APP_MESSAGING_SENDER_ID },
   appId: { REACT_APP_APP_ID },
-  rewrites: [
-    {
-      source: "**",
-      destination: "/index.html",
-    },
-  ],
 }
 
 const app = initializeApp(firebaseConfig)
